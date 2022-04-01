@@ -10,7 +10,7 @@ C# API application designed to provide clients with specific data regarding pets
 
 ### 🦠 Known Bugs
 
-- No known bugs
+- Random animal genertator will generate a random animal based on an ID between 1 and the max animal ID. If an animal is deleted, the random generator may select this animal and return an error message.
 
 ### 🛠 Built With
 
@@ -92,7 +92,7 @@ To view or edit the code, you will need an code editor or text editor. The popul
   },
   "AllowedHosts": "*",
   "ConnectionStrings": {
-      "DefaultConnection": "Server=localhost;Port=3306;database=animal_shelter;uid=root;pwd=YourPassword;"
+      "DefaultConnection": "Server=localhost;Port=5000;database=animal_shelter;uid=root;pwd=YourPassword;"
   }
 }
 ```
@@ -123,7 +123,7 @@ To explore the AnimalShelter API with NSwag, launch the project using `dotnet ru
 #### Example Query
 
 ```
-https://localhost:5000/api/animals/?species=Dog
+https://localhost:5000/api/1.0/animals/?species=Dog
 ```
 
 ..........................................................................................
@@ -135,11 +135,12 @@ Access specific information on message board posts from various authors and cate
 #### HTTP Request
 
 ```
-GET /api/animals
-POST /api/animals
-GET /api/animals/{id}
-PUT /api/animals/{id}
-DELETE /api/animals/{id}
+GET /api/1.0/animals
+POST /api/1.0/animals
+GET /api/1.0/animals/{id}
+GET /api/1.0/animals/Random
+PUT /api/1.0/animals/{id}
+DELETE /api/1.0/animals/{id}
 ```
 
 #### Path Parameters
@@ -149,11 +150,12 @@ DELETE /api/animals/{id}
 |   Name    | string |  none   |   true   | Return animals by specific name.                       |
 |  Gender   | string |  none   |   true   | Return animals by specific gender.                     |
 |  Species  | string |  none   |   true   | Return all animals associated with specific a species. |
+|  Random   | string |  none   |  false   | Returns a random animal from the database.             |
 
 #### Example Query
 
 ```
-https://localhost:5000/api/animals/?author=Ryan+Spencer
+https://localhost:5000/api/1.0/animals/?species=Cat
 ```
 
 #### Sample JSON Response
