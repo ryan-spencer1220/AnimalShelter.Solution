@@ -6,12 +6,15 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AnimalShelter.Models;
+using Microsoft.AspNetCore.Cors;
+
 
 namespace AnimalShelter.Controllers
 {
   [Route("api/1.0/[controller]")]
   [ApiController]
   [ApiVersion("1.0")]
+  [EnableCors("Policy")]
   public class AnimalsController : ControllerBase
   {
     private readonly AnimalShelterContext _db;
