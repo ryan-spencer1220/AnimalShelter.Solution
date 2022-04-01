@@ -60,10 +60,8 @@ namespace AnimalShelter.Controllers
     public async Task<ActionResult<Animal>> GetRandomAnimal(int id)
     {
         Random rnd = new Random();
-        var allIds = _db.Animals.OrderByDescending(u => u.AnimalId).FirstOrDefault();
-        Console.WriteLine(allIds);
-        // int totalNumberOfIds = allIds.Length;
-        var randomAnimal = await _db.Animals.FindAsync(rnd.Next());
+        int maxId = _db.Animals.Max(u => u.AnimalId);
+        var randomAnimal = await _db.Animals.FindAsync(rnd.Next(1, maxId));
 
         if (randomAnimal == null)
         {
